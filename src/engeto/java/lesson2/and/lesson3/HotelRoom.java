@@ -1,4 +1,4 @@
-package engeto.java.lesson2;
+package engeto.java.lesson2.and.lesson3;
 
 import java.math.BigDecimal;
 
@@ -72,7 +72,14 @@ public class HotelRoom {
     }
 
     public String getDescription (){
-            return "\nRoom Number: " + this.numberOfHotelRoom + "\tNumber of Beds: " + this.numberOfBeds + "\tHave Balcony: " + this.haveBalcony + "\tHave View to a Sea: " + this.haveViewToSea + "\nPrice per Night: " + this.pricePerNight + " Kč";
-        }
+        //return "\nRoom Number: " + this.numberOfHotelRoom + "\tNumber of Beds: " + this.numberOfBeds
+        // + "\tHave Balcony: " + this.haveBalcony + "\tHave View to a Sea: " + this.haveViewToSea
+        // + "\nPrice per Night: " + this.pricePerNight + " Kč";
+        return " [" + this.numberOfBeds + ", " + this.haveViewToSea + "] ";
+    }
+
+    public String getDescriptionForPricing (){
+        return " (room " + this.numberOfHotelRoom + "): ";
+    }
 }
 

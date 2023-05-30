@@ -1,9 +1,10 @@
-package engeto.java.lesson2;
+package engeto.java.lesson2.and.lesson3;
 import java.time.LocalDate;
 import java.time.Period;
 import java.time.format.DateTimeFormatter;
 
 public class Guest {
+    private String nameOfTravelCompany;
     private String firstName;
     private String lastName;
     private String fullName;
@@ -16,8 +17,15 @@ public class Guest {
         fullName = firstName + " " + lastName;
         setDateOfBirth(dateOfBirthStr);
     }
+    public Guest (String nameOfTravelCompany){
+        setNameOfTravelCompany(nameOfTravelCompany);
+    }
 
     //getters
+    public String getNameOfTravelCompany() {
+        return nameOfTravelCompany;
+    }
+
     public String getFirstName(){
         return firstName;
     }
@@ -27,9 +35,9 @@ public class Guest {
     }
 
     public int getAge(){
+        //if (dateOfBirth==null){return null;}
         Period period = Period.between(dateOfBirth, LocalDate.now());
-        int age = period.getYears();
-        return age;
+        return period.getYears();
     }
 
     public LocalDate getDateOfBirth(){
@@ -37,6 +45,14 @@ public class Guest {
     }
 
     //setters
+    public void setNameOfTravelCompany(String nameOfTravelCompany) {
+        if (nameOfTravelCompany.isEmpty()){
+            throw new IllegalArgumentException("Enter valid company name.");
+        }
+
+        this.nameOfTravelCompany = nameOfTravelCompany;
+    }
+
     public void setFirstName(String firstName){
         if (firstName.isEmpty()){
             throw new IllegalArgumentException("Enter valid first name.");
@@ -64,7 +80,20 @@ public class Guest {
     }
 
     public String getDescription (){
-            return "\nName:" + this.fullName + "\nDate of Birth: " + this.dateOfBirth + "\nAge: " + getAge();
+        if (fullName == null){
+            //return "\nName:" + this.nameOfTravelCompany;
+            return this.nameOfTravelCompany;
+        }
+        //return "\nName:" + this.fullName + "\nDate of Birth: " + this.dateOfBirth + "\nAge: " + getAge();
+        return this.fullName + " (" + this.dateOfBirth + ") ";
+    }
+
+    public String getDescriptionForPricing (){
+        if (fullName == null){
+            //return "\nName:" + this.nameOfTravelCompany;
+            return this.nameOfTravelCompany + " ";
+        }
+        //return "\nName:" + this.fullName + "\nDate of Birth: " + this.dateOfBirth + "\nAge: " + getAge();
+        return this.fullName + " ";
     }
 }
-//nutne dodelat metodu na spocitani veku
